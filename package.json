@@ -1,0 +1,11 @@
+{
+  "name": "arcane-plateau-2105",
+  "version": "0.0.0",
+  "description": "Banweb to Gmail Calendar",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tsholmes",
+  "license": "BSD-2-Clause"
+}
