@@ -1,24 +1,57 @@
 <html>
   <head>
-	<title>Banweb to Google Calendar</title>
-	<script type="text/javascript" src="index.js"></script>
+    <title>Banweb to Google Calendar</title>
+    <script type="text/javascript" src="env.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=apiload"></script>
   </head>
   <body>
-	<table>
-	  <tr>
-		<td><label for="uid">User Id:</label></td>
-		<td><input id="uid" /></td>
-	  </tr>
-	  <tr>
-		<td><label for="pass">Password:</label></td>
-		<td><input id="pass" type="password" /></td>
-	  </tr>
-	  <tr>
-	    <td></td>
-		<td><input id="send" type="button" value="Send" /></td>
-	  </tr>
-	</table>
-	<pre id="res">
-	</pre>
+    <table id="steptable">
+      <tr>
+        <td id="step1cell">Step 1</td>
+        <td id="step2cell">Step 2</td>
+        <td id="step3cell">Step 3</td>
+        <td id="step4cell">Step 4</td>
+        <td id="step5cell">Step 5</td>
+      </tr>
+    </table>
+    <div id="step1">
+      Login to Banweb
+      <form id="banwebform">
+        <table>
+          <tr>
+            <td><label for="uid">User Id:</label></td>
+            <td><input id="uid" /></td>
+          </tr>
+          <tr>
+            <td><label for="pass">Password:</label></td>
+            <td><input id="pass" type="password" /></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input id="send" type="submit" value="Send" /></td>
+          </tr>
+        </table>
+      </form>
+      <pre id="res">
+      </pre>
+    </div>
+    <div id="step2">
+      Authorize Google account
+    </div>
+    <div id="step3">
+      Select Calendar
+      <form id="calform">
+        <select id="calselect">
+        </select><br />
+        <input id="calsubmit" type="submit" value="Select" />
+      </form>
+    </div>
+    <div id="step4">
+      Import Courses
+    </div>
+    <div id="step5">
+      Done!
+    </div>
   </body>
 </html>
