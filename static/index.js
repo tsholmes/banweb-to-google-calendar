@@ -43,8 +43,8 @@ function step1() { // Banweb login
       if (xhr.readyState != 4) return;
       res.innerHTML = xhr.response;
       courses = JSON.parse(xhr.response);
-      setStep(2);
     };
+    setStep(2);
     return false;
   };
 }
@@ -85,22 +85,29 @@ function step3() { // Calendar select
 }
 
 function step4() { // Course import
+  var count = 0;
+  var fin = 0;
   for (var x in courses) {
     var course = courses[x];
     if (course.time == "TBA") continue;
+    count++;
     gapi.client.calendar.events.insert({calendarId:calid,resource:courseToEvent(course)})
       .execute((function(course){
         return function(res){
           steps[4].appendChild(document.createElement("br"));
           steps[4].appendChild(document.createTextNode("Added: " + course.number + " - " + course.title + " - " + course.section));
           console.log(res);
+          fin++;
+          if (fin >= count) {
+            setStep(5);
+          }
         };
       })(course));
   }
 }
 
 function step5() { // Done
-  alert("Done!");
+  
 }
 
 function apiload() {
