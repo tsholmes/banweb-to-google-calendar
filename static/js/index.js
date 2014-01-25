@@ -7,16 +7,20 @@ var calid;
 
 function setStep(idx) {
   for (var i = 1; i <= 5; i++) {
-    steps[i].style.display = (i == idx)?"block":"none";
-    stepcells[i].style.backgroundColor = (i == idx)?"#FFF":"#888";
+    steps[i].style.display = (i == idx) ? "block" : "none";
+	if (i == idx) {
+		stepcells[i].addClass('active');
+	} else {
+		stepcells[i].removeClass('active');
+	}
   }
   if (stepfuncs[idx]) stepfuncs[idx]();
 }
 
-window.addEventListener("load",function() {
+window.addEventListener("load", function() {
   for (var i = 1; i <= 5; i++) {
     steps[i] = document.getElementById("step" + i);
-    stepcells[i] = document.getElementById("step" + i + "cell");
+    stepcells[i] = $("#step" + i + "cell");
   }
   stepfuncs[1] = step1;
   stepfuncs[2] = step2;
@@ -30,7 +34,6 @@ function step1() { // Banweb login
   var uid = document.getElementById("uid");
   var pass = document.getElementById("pass");
   var send = document.getElementById("send");
-  var res = document.getElementById("res");
   var banwebform = document.getElementById("banwebform");
   
   banwebform.onsubmit = function() {
@@ -41,7 +44,6 @@ function step1() { // Banweb login
     xhr.send(JSON.stringify(ps));
     xhr.onreadystatechange = function() {
       if (xhr.readyState != 4) return;
-      res.innerHTML = xhr.response;
       courses = JSON.parse(xhr.response);
     };
     setStep(2);
@@ -94,8 +96,7 @@ function step4() { // Course import
     gapi.client.calendar.events.insert({calendarId:calid,resource:courseToEvent(course)})
       .execute((function(course){
         return function(res){
-          steps[4].appendChild(document.createElement("br"));
-          steps[4].appendChild(document.createTextNode("Added: " + course.number + " - " + course.title + " - " + course.section));
+          steps[4].innerHTML += "<li>Added: " + course.number + " - " + course.title + " - " + course.section + "</li>";
           console.log(res);
           fin++;
           if (fin >= count) {

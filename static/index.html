@@ -1,57 +1,101 @@
+<!doctype html>
 <html>
-  <head>
-    <title>Banweb to Google Calendar</title>
-    <script type="text/javascript" src="env.js"></script>
-    <script type="text/javascript" src="index.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=apiload"></script>
-  </head>
-  <body>
-    <table id="steptable">
-      <tr>
-        <td id="step1cell">Step 1</td>
-        <td id="step2cell">Step 2</td>
-        <td id="step3cell">Step 3</td>
-        <td id="step4cell">Step 4</td>
-        <td id="step5cell">Step 5</td>
-      </tr>
-    </table>
-    <div id="step1">
-      Login to Banweb
-      <form id="banwebform">
-        <table>
-          <tr>
-            <td><label for="uid">User Id:</label></td>
-            <td><input id="uid" /></td>
-          </tr>
-          <tr>
-            <td><label for="pass">Password:</label></td>
-            <td><input id="pass" type="password" /></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><input id="send" type="submit" value="Send" /></td>
-          </tr>
-        </table>
-      </form>
-      <pre id="res">
-      </pre>
-    </div>
-    <div id="step2">
-      Authorize Google account
-    </div>
-    <div id="step3">
-      Select Calendar
-      <form id="calform">
-        <select id="calselect">
-        </select><br />
-        <input id="calsubmit" type="submit" value="Select" />
-      </form>
-    </div>
-    <div id="step4">
-      Import Courses
-    </div>
-    <div id="step5">
-      Done!
-    </div>
-  </body>
+<head>
+<title>Banweb to Google Calendar</title>
+<link href="./css/bootstrap-3.0.3.css" rel="stylesheet">
+<script type="text/javascript" src="env.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=apiload"></script>
+<style>
+#step1, #step2, #step3, #step4, #step5 {
+	display: none;
+}
+
+.footer {
+	margin-top: 19px;
+	padding-top: 19px;
+	color: #777;
+	border-top: 1px solid #e5e5e5;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="header">
+		<!--<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>-->
+		<h3 class="text-muted">Banweb to Google Calendar</h3>
+	</div>
+	<div class="row">
+		<ul id="steptable" class="nav nav-tabs">
+			<li id="step1cell"><a href="#">Step 1</a></li>
+			<li id="step2cell"><a href="#">Step 2</a></li>
+			<li id="step3cell"><a href="#">Step 3</a></li>
+			<li id="step4cell"><a href="#">Step 4</a></li>
+			<li id="step5cell"><a href="#">Step 5</a></li>
+		</ul>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div id="step1">
+				<h3>Login to Banweb</h3>
+				<form id="banwebform" class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="uid" class="col-sm-2 control-label">User ID</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="uid" placeholder="janovak">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pass" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-9">
+							<input type="password" class="form-control" id="pass" placeholder="hunter2">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-9">
+							<button id="send" type="submit" class="btn btn-default">Sign in</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="step2">
+				<h3>Authorize Google account</h3>
+				<p>
+				Be sure to enable popups for this site if the window does not appear.
+				</p>
+			</div>
+			<div id="step3">
+				<h3>Select Calendar</h3>
+				<form id="calform" class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="calselect" class="col-sm-2 control-label">Calendar</label>
+						<div class="col-sm-9">
+							<select class="form-control" id="calselect"></select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-9">
+							<button id="calsubmit" type="submit" class="btn btn-default">Sign in</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="step4">
+				<h3>Import Courses</h3>
+			</div>
+			<div id="step5">
+				<h1>Done!</h1>	
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<p>&copy; Absolutely Noone</p>
+	</div>
+</div>
+</body>
 </html>
